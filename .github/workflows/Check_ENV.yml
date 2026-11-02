@@ -1,0 +1,5 @@
+- name: Run automation
+  env:
+    SIMASTER_USERNAME: ${{ secrets.SIMASTER_USERNAME }}
+    SIMASTER_PASSWORD: ${{ secrets.SIMASTER_PASSWORD }}
+  run: uv run python src/main.py -s --headless --verify --proker_presensi
