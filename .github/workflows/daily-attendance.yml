@@ -3,9 +3,9 @@ name: Daily KKN Attendance
 on:
   schedule:
     # 06:00 WIB = 23:00 UTC previous day
-    - cron: "0 22 * * *"
-    # 20:00 WIB = 13:00 UTC
-    - cron: "0 13 * * *"
+    - cron: "0 23 * * *"
+    # 10:00 WIB = 03:00 UTC
+    - cron: "0 3 * * *"
   workflow_dispatch:
 
 jobs:
