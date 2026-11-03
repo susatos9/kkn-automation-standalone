@@ -1,0 +1,11 @@
+locations:
+  desa_a:
+    qr_value: 102322
+    latitude: -7.6730434
+    longitude: 110.3921122
+    radius: 50
+
+user_locations:
+  nugrohoadisusanto: desa_a
+
+default_location: desa_a
