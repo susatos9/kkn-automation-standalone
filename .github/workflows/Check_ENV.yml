@@ -1,5 +1,27 @@
-- name: Run automation
-  env:
-    SIMASTER_USERNAME: ${{ secrets.SIMASTER_USERNAME }}
-    SIMASTER_PASSWORD: ${{ secrets.SIMASTER_PASSWORD }}
-  run: uv run python src/main.py -s --headless --verify --proker_presensi
+name: KKN Automation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+
+      - run: uv sync
+
+      - name: Run automation
+        env:
+          SIMASTER_USERNAME: ${{ secrets.SIMASTER_USERNAME }}
+          SIMASTER_PASSWORD: ${{ secrets.SIMASTER_PASSWORD }}
+        run: uv run python src/main.py -s --headless --verify --proker_presensi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reports
+          path: reports/
+          if-no-files-found: ignore
